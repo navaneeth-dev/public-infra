@@ -12,8 +12,8 @@ resource "hcloud_server" "foss" {
   name        = "foss"
   image       = "debian-12"
   server_type = "cx11"
-  datacenter = "nbg1-dc3"
-  ssh_keys = [ "16754374" ]
+  datacenter  = "nbg1-dc3"
+  ssh_keys    = ["16754374"]
   public_net {
     ipv4_enabled = true
     ipv6_enabled = true
