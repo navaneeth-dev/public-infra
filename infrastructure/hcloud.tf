@@ -1,10 +1,10 @@
-variable "HCLOUD_TOKEN" {
+variable "hcloud_token" {
   sensitive = true
 }
 
 # Configure the Hetzner Cloud Provider
 provider "hcloud" {
-  token = var.HCLOUD_TOKEN
+  token = var.hcloud_token
 }
 
 # Create a server
