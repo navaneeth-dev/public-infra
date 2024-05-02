@@ -8,7 +8,7 @@ terraform {
 
   cloud {
     organization = "dev-test-org"
-    hostname = "app.terraform.io"
+    hostname     = "app.terraform.io"
 
     workspaces {
       name = "github-actions"
