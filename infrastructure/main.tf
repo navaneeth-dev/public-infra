@@ -5,4 +5,13 @@ terraform {
       version = "~> 1.45"
     }
   }
+
+  cloud {
+    organization = "dev-test-org"
+    hostname = "app.terraform.io"
+
+    workspaces {
+      name = "github-actions"
+    }
+  }
 }
