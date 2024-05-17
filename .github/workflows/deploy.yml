@@ -55,6 +55,7 @@ jobs:
       env:
         TF_VAR_hcloud_token: ${{ secrets.TF_VAR_HCLOUD_TOKEN }}
   ansible:
+    name: 'Deploy Services'
     needs: terraform
     runs-on: ubuntu-22.04
     steps:
