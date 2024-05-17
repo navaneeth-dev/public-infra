@@ -3,4 +3,5 @@
   hosts: vps
   remote_user: debian
   roles:
-    - geerlingguy.docker
+    - role: geerlingguy.docker
+      become: yes
