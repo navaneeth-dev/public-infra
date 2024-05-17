@@ -1,5 +1,6 @@
 ---
 - name: Deploy all public infrastructre services
   hosts: vps
+  remote_user: debian
   roles:
     - geerlingguy.docker
