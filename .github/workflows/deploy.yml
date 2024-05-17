@@ -1,4 +1,4 @@
-name: 'Terraform'
+name: 'Deploy to production'
 
 on:
   push:
@@ -10,8 +10,8 @@ permissions:
 
 jobs:
   terraform:
-    name: 'Terraform'
-    runs-on: ubuntu-latest
+    name: 'Create infrastructure'
+    runs-on: ubuntu-22.04
     environment: production
 
     defaults:
@@ -54,3 +54,11 @@ jobs:
       run: terraform apply -auto-approve -input=false
       env:
         TF_VAR_hcloud_token: ${{ secrets.TF_VAR_HCLOUD_TOKEN }}
+  ansible:
+    needs: terraform
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy services
+        run: ansible-playbook main.yml
+        working-directory: ./services
