@@ -1,2 +1,5 @@
 ---
-
+- name: Deploy all public infrastructre services
+  hosts: vps
+  roles:
+    - geerlingguy.docker

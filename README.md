@@ -2,6 +2,12 @@
 
 Self hosted foss services hosted by me.
 
+## Services
+
+| Name | Url |
+| --- | ---- |
+| CommaRSS | https://commarss.foss.rizexor.com |
+
 ## Goals
 
 - Replace closed source apps with FOSS (Google, Vaultwarden, etc...)
