@@ -58,9 +58,6 @@ jobs:
     name: 'Deploy Services'
     needs: terraform
     runs-on: ubuntu-22.04
-    defaults:
-      run:
-        working-directory: ./services
     steps:
       - uses: actions/checkout@v3
       - uses: webfactory/ssh-agent@v0.9.0
@@ -70,5 +67,7 @@ jobs:
         run: ssh-keyscan foss.rizexor.com
       - name: Install dependencies
         run: ansible-galaxy install -r requirements.yml
+        working-directory: ./services
       - name: Deploy services
         run: ansible-playbook main.yml
+        working-directory: ./services
