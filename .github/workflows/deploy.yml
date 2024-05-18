@@ -74,6 +74,7 @@ jobs:
       - name: Add private key to SSH agent
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          TF_VAR_hcloud_token: ${{ secrets.TF_VAR_HCLOUD_TOKEN }}
         run: echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
       - name: Get VPS public key and set permissions for known_hosts
         run: |
