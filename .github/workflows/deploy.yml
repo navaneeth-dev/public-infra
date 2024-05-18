@@ -65,18 +65,14 @@ jobs:
       SSH_AUTH_SOCK: /tmp/ssh_agent.sock
     steps:
       - uses: actions/checkout@v4
-      - name: Create SSH directory and set permissions
+      - name: Create SSH private key file and set permissions
         run: |
           mkdir ~/.ssh
           chmod 700 ~/.ssh
-      - name: Create SSH private key file
-        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/github_action
-      - name: Set correct permissions
-        run: chmod 600 ~/.ssh/github_action
       - name: Start SSH agent
         run: ssh-agent -a $SSH_AUTH_SOCK > /dev/null
       - name: Add private key to SSH agent
-        run: ssh-add ~/.ssh/github_action
+        run: echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
       - name: Get VPS public key and set permissions for known_hosts
         run: |
           ssh-keyscan foss.rizexor.com >> ~/.ssh/known_hosts
