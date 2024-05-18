@@ -68,7 +68,7 @@ jobs:
           mkdir ~/.ssh
           chmod 700 ~/.ssh
       - name: Test
-        run: env | grep -i ssh
+        run: env
       - name: Create SSH private key file
         run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/github_action
       - name: Set correct permissions
