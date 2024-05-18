@@ -75,7 +75,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           TF_VAR_hcloud_token: ${{ secrets.TF_VAR_HCLOUD_TOKEN }}
-        run: echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+        run: echo "${SSH_PRIVATE_KEY}" | ssh-add -
       - name: Get VPS public key and set permissions for known_hosts
         run: |
           ssh-keyscan foss.rizexor.com >> ~/.ssh/known_hosts
