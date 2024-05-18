@@ -54,3 +54,26 @@ jobs:
       run: terraform apply -auto-approve -input=false
       env:
         TF_VAR_hcloud_token: ${{ secrets.TF_VAR_HCLOUD_TOKEN }}
+  ansible:
+    name: 'Deploy Services'
+    needs: terraform
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: ./services
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create SSH private key file
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/github_action
+      - name: Set correct permissions
+        run: chmod 400 ~/.ssh/github_action
+      - name: Start SSH agent
+        run: eval "$(ssh-agent -s)"
+      - name: Add private key to SSH agent
+        run: ssh-add ~/.ssh/github_action
+      - name: Get VPS public key
+        run: ssh-keyscan foss.rizexor.com
+      - name: Install dependencies
+        run: ansible-galaxy install -r requirements.yml
+      - name: Deploy services
+        run: ansible-playbook main.yml
