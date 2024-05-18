@@ -76,7 +76,7 @@ jobs:
       - name: Start SSH agent
         run: ssh-agent -a $SSH_AUTH_SOCK > /dev/null
       - name: Add private key to SSH agent
-        run: ssh-add
+        run: cat ~/.ssh/id_ed25519; ssh-add
       - name: Get VPS public key and set permissions for known_hosts
         run: |
           ssh-keyscan foss.rizexor.com >> ~/.ssh/known_hosts
