@@ -61,14 +61,14 @@ jobs:
     defaults:
       run:
         working-directory: ./services
+    env:
+      SSH_AUTH_SOCK: /tmp/ssh_agent.sock
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Create SSH directory and set permissions
         run: |
           mkdir ~/.ssh
           chmod 700 ~/.ssh
-      - name: Test
-        run: env
       - name: Create SSH private key file
         run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/github_action
       - name: Set correct permissions
@@ -77,8 +77,10 @@ jobs:
         run: eval "$(ssh-agent -s)"
       - name: Add private key to SSH agent
         run: ssh-add ~/.ssh/github_action
-      - name: Get VPS public key
-        run: ssh-keyscan foss.rizexor.com
+      - name: Get VPS public key and set permissions for known_hosts
+        run: |
+          ssh-keyscan foss.rizexor.com >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
       - name: Install dependencies
         run: ansible-galaxy install -r roles/requirements.yml
       - name: Deploy services
