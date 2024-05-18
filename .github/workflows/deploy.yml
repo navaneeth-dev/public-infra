@@ -66,16 +66,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Create SSH private key file and set permissions
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           mkdir ~/.ssh
           chmod 700 ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 400 ~/.ssh/id_ed25519
       - name: Start SSH agent
         run: ssh-agent -a $SSH_AUTH_SOCK > /dev/null
       - name: Add private key to SSH agent
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          TF_VAR_hcloud_token: ${{ secrets.TF_VAR_HCLOUD_TOKEN }}
-        run: echo "${SSH_PRIVATE_KEY}" | ssh-add -
+        run: ssh-add
       - name: Get VPS public key and set permissions for known_hosts
         run: |
           ssh-keyscan foss.rizexor.com >> ~/.ssh/known_hosts
