@@ -74,7 +74,7 @@ jobs:
       - name: Set correct permissions
         run: chmod 600 ~/.ssh/github_action
       - name: Start SSH agent
-        run: eval "$(ssh-agent -s)"
+        run: ssh-agent -a $SSH_AUTH_SOCK > /dev/null
       - name: Add private key to SSH agent
         run: ssh-add ~/.ssh/github_action
       - name: Get VPS public key and set permissions for known_hosts
