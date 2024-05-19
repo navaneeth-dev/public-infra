@@ -8,7 +8,7 @@
     install_directory: /srv
     data_dir: /docker/appdata
   roles:
-    - role: geerlingguy.docker
-      become: yes
+    # - role: geerlingguy.docker
+      # become: yes
     - role: reverse-proxy
     # - role: commafeed
