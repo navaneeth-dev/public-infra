@@ -10,7 +10,7 @@
     docker_users:
       - "{{ primary_user }}"
   roles:
-    - role: geerlingguy.docker
-      become: yes
+    #- role: geerlingguy.docker
+    #  become: yes
     - role: reverse-proxy
     # - role: commafeed

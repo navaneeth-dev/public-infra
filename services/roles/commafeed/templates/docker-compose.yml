@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   commafeed:
     image: athou/commafeed:4.4.0

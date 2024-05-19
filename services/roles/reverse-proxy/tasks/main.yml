@@ -38,9 +38,9 @@
     path: "{{ install_directory }}/{{ role_name }}" 
     dockerfile: Dockerfile
 
-- name: Start docker container
+- name: Start docker compose reverse proxy
   community.docker.docker_compose_v2:
     project_src: "{{ install_directory }}/{{ role_name }}"
-    pull: true
+    pull: always
     remove_orphans: yes
 
