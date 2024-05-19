@@ -13,7 +13,7 @@
     dest: "{{ install_directory }}/{{ role_name }}/docker-compose.yml"
     owner: "{{ primary_user }}"
     group: "{{ primary_group }}"
-    validate: docker-compose -f %s config
+    validate: docker compose -f %s config
   become: true
 
 - name: Start docker container

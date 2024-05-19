@@ -13,7 +13,7 @@
     dest: "{{ install_directory }}/{{ role_name }}/docker-compose.yml"
     owner: "{{ primary_user }}"
     group: "{{ primary_group }}"
-    validate: docker-compose -f %s config
+    validate: docker compose -f %s config
   become: true
 
 - name: Copy Dockerfile file to destination
@@ -22,7 +22,6 @@
     dest: "{{ install_directory }}/{{ role_name }}/Dockerfile"
     owner: "{{ primary_user }}"
     group: "{{ primary_group }}"
-    validate: docker-compose -f %s config
   become: true
 
 - name: Copy Caddyfile file to destination
@@ -31,7 +30,6 @@
     dest: "{{ install_directory }}/{{ role_name }}/Caddyfile"
     owner: "{{ primary_user }}"
     group: "{{ primary_group }}"
-    validate: docker-compose -f %s config
   become: true
 
 - name: Build Caddy image
