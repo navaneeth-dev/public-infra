@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  caddy:
+    image: caddy-custom:latest
+    name: caddy
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - "{{ data_dir }}/{{ role_name }}/data:/data"
+      - "{{ data_dir }}/{{ role_name }}/config:/config"

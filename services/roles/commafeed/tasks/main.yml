@@ -5,7 +5,6 @@
     state: directory
     user: "{{ primary_user }}"
     group: "{{ primary_group }}"
-    mode: "{{ docker_compose_directory_mask }}"
   become: true
 
 - name: Copy docker-compose file to destination
