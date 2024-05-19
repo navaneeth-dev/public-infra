@@ -1,2 +1,25 @@
 ---
+- name: Create install directory
+  file:
+    path: "{{ install_directory }}/{{ role_name }}"
+    state: directory
+    user: "{{ primary_user }}"
+    group: "{{ primary_group }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+- name: Copy docker-compose file to destination
+  template:
+    src: docker-compose.yml
+    dest: "{{ install_directory }}/{{ role_name }}/docker-compose.yml"
+    user: "{{ primary_user }}"
+    group: "{{ primary_group }}"
+    validate: docker-compose -f %s config
+  become: true
+
+- name: Start docker container
+  community.docker.docker_compose_v2:
+    project_src: "{{ install_directory }}/{{ role_name }}"
+    pull: true
+    remove_orphans: yes
 

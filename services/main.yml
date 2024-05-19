@@ -2,6 +2,11 @@
 - name: Deploy all public infrastructre services
   hosts: vps
   remote_user: debian
+  vars:
+    primary_user: debian
+    primary_group: debian
+    install_directory: /srv
   roles:
     - role: geerlingguy.docker
       become: yes
+    - role: commafeed
