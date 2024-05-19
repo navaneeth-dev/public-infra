@@ -7,8 +7,10 @@
     primary_group: debian
     install_directory: /srv
     data_dir: /docker/appdata
+    docker_users:
+      - "{{ primary_user }}"
   roles:
-    # - role: geerlingguy.docker
-      # become: yes
+    - role: geerlingguy.docker
+      become: yes
     - role: reverse-proxy
     # - role: commafeed

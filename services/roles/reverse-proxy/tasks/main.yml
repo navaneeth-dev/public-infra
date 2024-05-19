@@ -35,7 +35,7 @@
 - name: Build Caddy image
   community.docker.docker_image_build:
     name: caddy-custom:latest
-    path: "{{ install_directory }}/{{ role_name }}/Dockerfile" 
+    path: "{{ install_directory }}/{{ role_name }}" 
     dockerfile: Dockerfile
 
 - name: Start docker container
