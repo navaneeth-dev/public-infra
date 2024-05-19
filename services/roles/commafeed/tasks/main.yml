@@ -3,7 +3,7 @@
   file:
     path: "{{ install_directory }}/{{ role_name }}"
     state: directory
-    user: "{{ primary_user }}"
+    owner: "{{ primary_user }}"
     group: "{{ primary_group }}"
   become: true
 
@@ -11,7 +11,7 @@
   template:
     src: docker-compose.yml
     dest: "{{ install_directory }}/{{ role_name }}/docker-compose.yml"
-    user: "{{ primary_user }}"
+    owner: "{{ primary_user }}"
     group: "{{ primary_group }}"
     validate: docker-compose -f %s config
   become: true
