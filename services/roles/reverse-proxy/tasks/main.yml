@@ -41,6 +41,5 @@
 - name: Start docker compose reverse proxy
   community.docker.docker_compose_v2:
     project_src: "{{ install_directory }}/{{ role_name }}"
-    pull: always
     remove_orphans: yes
 
