@@ -37,6 +37,7 @@
     name: caddy-custom:latest
     path: "{{ install_directory }}/{{ role_name }}" 
     dockerfile: Dockerfile
+    rebuild: always
 
 - name: Start docker compose reverse proxy
   community.docker.docker_compose_v2:

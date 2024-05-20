@@ -7,6 +7,7 @@
     primary_group: debian
     install_directory: /srv
     data_dir: /docker/appdata
+    domain: foss.rizexor.com
     docker_users:
       - "{{ primary_user }}"
   roles:
