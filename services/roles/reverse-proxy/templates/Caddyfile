@@ -8,6 +8,11 @@
 		reverse_proxy commafeed:8082
 	}
 
+	@pairdrop host pairdrop.{{ domain }}
+	handle @pairdrop {
+		reverse_proxy pairdrop:3000
+	}
+
 	# Fallback for otherwise unhandled domains
 	handle {
 		abort
