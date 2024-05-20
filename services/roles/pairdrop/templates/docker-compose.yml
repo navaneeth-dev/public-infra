@@ -1,0 +1,16 @@
+---
+services:
+  pairdrop:
+    image: lscr.io/linuxserver/pairdrop:1.10.8
+    container_name: pairdrop
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - "TZ={{ timezone }}"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: reverse-proxy
+    external: true
+

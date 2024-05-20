@@ -8,6 +8,7 @@
     install_directory: /srv
     data_dir: /docker/appdata
     domain: foss.rizexor.com
+    timezone: Asia/Kolkata
     docker_users:
       - "{{ primary_user }}"
     CF_API_TOKEN: !vault |
@@ -23,3 +24,4 @@
     #  become: yes
     - role: reverse-proxy
     - role: commafeed
+    - role: pairdrop
