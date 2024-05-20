@@ -3,6 +3,8 @@ services:
     image: athou/commafeed:4.4.0
     container_name: commafeed
     restart: unless-stopped
+    environment:
+      - "CF_APP_PUBLIC_URL=https://commafeed.{{ domain }}"
 
 networks:
   default:
