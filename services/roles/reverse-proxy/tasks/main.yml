@@ -31,13 +31,8 @@
     owner: "{{ primary_user }}"
     group: "{{ primary_group }}"
   become: true
-
-- name: Build Caddy image
-  community.docker.docker_image_build:
-    name: caddy-custom:latest
-    path: "{{ install_directory }}/{{ role_name }}" 
-    dockerfile: Dockerfile
-    rebuild: always
+  notify:
+    - Build Caddy image
 
 - name: Start docker compose reverse proxy
   community.docker.docker_compose_v2:
