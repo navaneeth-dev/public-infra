@@ -1,3 +1,15 @@
-{{ domain }} {
-    reverse_proxy commafeed:8082
+{{ domain }}, *.{{ domain }} {
+	tls {
+		dns cloudflare {{ CF_API_TOKEN }}
+	}
+
+	@commafeed host commafeed.{{ domain }}
+	handle @commafeed {
+		reverse_proxy commafeed:8082
+	}
+
+	# Fallback for otherwise unhandled domains
+	handle {
+		abort
+	}
 }
