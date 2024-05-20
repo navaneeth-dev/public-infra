@@ -14,4 +14,4 @@
     #- role: geerlingguy.docker
     #  become: yes
     - role: reverse-proxy
-    # - role: commafeed
+    - role: commafeed
