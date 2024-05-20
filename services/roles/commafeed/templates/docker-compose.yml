@@ -3,3 +3,8 @@ services:
     image: athou/commafeed:4.4.0
     container_name: commafeed
     restart: unless-stopped
+
+networks:
+  default:
+    name: reverse-proxy
+    external: true
