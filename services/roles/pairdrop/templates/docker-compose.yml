@@ -6,7 +6,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - DEBUG_MODE=false
+      - DEBUG_MODE=true
       - "TZ={{ timezone }}"
     restart: unless-stopped
 

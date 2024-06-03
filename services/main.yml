@@ -25,3 +25,4 @@
     - role: reverse-proxy
     - role: commafeed
     - role: pairdrop
+    - role: diun

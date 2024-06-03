@@ -15,7 +15,9 @@ notif:
     tags:
       - whale
     timeout: 10s
+{% raw %}
     templateTitle: "{{ .Entry.Image }} released"
     templateBody: |
       Docker tag {{ .Entry.Image }} which you subscribed to through {{ .Entry.Provider }} provider has been released.
+{% endraw %}
 
