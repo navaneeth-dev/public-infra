@@ -5,13 +5,8 @@ services:
     volumes:
       - "{{ data_dir }}/{{ role_name }}/data:/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "{{ install_directory }}/{{ role_name }}/diun.yml:/diun.yml:ro"
     environment:
       - "TZ={{ timezone }}"
-      - "DIUN_WATCH_WORKERS=20"
-      - "DIUN_WATCH_SCHEDULE=0 */6 * * *"
-      - "DIUN_WATCH_JITTER=30s"
-      - "DIUN_PROVIDERS_DOCKER=true"
-    labels:
-      - "diun.enable=true"
     restart: always
 
