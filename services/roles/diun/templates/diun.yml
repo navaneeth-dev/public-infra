@@ -7,3 +7,15 @@ providers:
   docker:
     watchByDefault: true
 
+notif:
+  ntfy:
+    endpoint: https://ntfy.sh
+    topic: cSRGClqmpBIhRhOj
+    priority: 3
+    tags:
+      - whale
+    timeout: 10s
+    templateTitle: "{{ .Entry.Image }} released"
+    templateBody: |
+      Docker tag {{ .Entry.Image }} which you subscribed to through {{ .Entry.Provider }} provider has been released.
+
