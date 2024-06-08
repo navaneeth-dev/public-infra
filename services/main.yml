@@ -10,4 +10,5 @@
     - role: pairdrop
     - role: diun
     - role: restic
+    - role: grafana
 
