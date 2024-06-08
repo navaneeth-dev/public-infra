@@ -1,5 +1,5 @@
 ---
-- name: Deploy all public infrastructre services
+- name: Deploy all public infrastructure services
   hosts: vps
   remote_user: debian
   vars:
