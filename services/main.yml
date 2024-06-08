@@ -20,9 +20,11 @@
           36323137313136313262613535306365636539616234303664313135626330383464393533333235
           3464303737346466613739383062636637373835623338626431
   roles:
-    #- role: geerlingguy.docker
-    #  become: yes
+    - role: geerlingguy.docker
+      become: yes
     - role: reverse-proxy
     - role: commafeed
     - role: pairdrop
     - role: diun
+    - role: restic
+
