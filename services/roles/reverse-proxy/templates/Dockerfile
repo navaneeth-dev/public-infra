@@ -1,4 +1,4 @@
-ARG VERSION="2.8"
+ARG VERSION="2.8.4"
 
 FROM caddy:$VERSION-builder AS builder
 

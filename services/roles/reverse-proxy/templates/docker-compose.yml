@@ -1,6 +1,6 @@
 services:
   caddy:
-    image: caddy-custom:latest
+    build: ./
     container_name: caddy
     restart: unless-stopped
     cap_add:

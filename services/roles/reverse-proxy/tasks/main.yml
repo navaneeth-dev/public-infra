@@ -31,8 +31,8 @@
     owner: "{{ primary_user }}"
     group: "{{ primary_group }}"
   become: true
-  notify:
-    - Build Caddy image
+  #notify:
+  #  - Build Caddy image
 
 - name: Start docker compose reverse proxy
   community.docker.docker_compose_v2:

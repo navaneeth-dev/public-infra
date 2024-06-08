@@ -13,6 +13,11 @@
 		reverse_proxy pairdrop:3000
 	}
 
+	@grafana host grafana.{{ domain }}
+	handle @grafana {
+		reverse_proxy grafana:3000
+	}
+
 	# Fallback for otherwise unhandled domains
 	handle {
 		abort

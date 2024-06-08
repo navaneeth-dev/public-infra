@@ -24,4 +24,5 @@ apps are much better than closed source ones.
 
 - grafana stack
 - matrix server
+- remove handler
 
