@@ -6,8 +6,9 @@ Self hosted foss services hosted by me.
 
 | Name | Url |
 | --- | ---- |
-| CommaRSS | https://commarss.foss.rizexor.com |
+| CommaFeed | https://commafeed.foss.rizexor.com |
 | PairDrop | https://pairdrop.foss.rizexor.com |
+| Grafana | https://grafana.foss.rizexor.com |
 
 ## Goals
 
