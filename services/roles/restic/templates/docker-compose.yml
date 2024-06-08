@@ -1,5 +1,6 @@
 ---
-backup:
+services:
+  backup:
     container_name: backup
     image: mazzolino/restic
     hostname: docker
@@ -7,8 +8,8 @@ backup:
     environment:
       RUN_ON_STARTUP: "true"
       BACKUP_CRON: "0 0 23 * * *"
-      RESTIC_REPOSITORY: {{ RESTIC_REPOSITORY }}
-      RESTIC_PASSWORD: {{ RESTIC_PASSWORD }}
+      RESTIC_REPOSITORY: "{{ RESTIC_REPOSITORY }}"
+      RESTIC_PASSWORD: '{{ RESTIC_PASSWORD }}'
       RESTIC_BACKUP_ARGS: >-
         --tag docker-volumes
         --exclude='*.tmp'
@@ -18,9 +19,9 @@ backup:
         --keep-daily 7
         --keep-weekly 5
         --keep-monthly 12
-      AWS_ACCESS_KEY_ID: {{ AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: {{ AWS_SECRET_ACCESS_KEY }}
-      TZ: {{ timezone }}
+      AWS_ACCESS_KEY_ID: "{{ AWS_ACCESS_KEY_ID }}"
+      AWS_SECRET_ACCESS_KEY: "{{ AWS_SECRET_ACCESS_KEY }}"
+      TZ: "{{ timezone }}"
     volumes:
       - /mnt/restore:/mnt/restore
       - /docker/appdata:/data:ro
@@ -29,27 +30,29 @@ backup:
     hostname: docker
     restart: unless-stopped
     environment:
+      SKIP_INIT: "true"
       RUN_ON_STARTUP: "true"
       PRUNE_CRON: "0 0 4 * * *"
-      RESTIC_REPOSITORY: {{ RESTIC_REPOSITORY }}
-      RESTIC_PASSWORD: {{ RESTIC_PASSWORD }}
-      AWS_ACCESS_KEY_ID: {{ AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: {{ AWS_SECRET_ACCESS_KEY }}
-      TZ: {{ timezone }}
+      RESTIC_REPOSITORY: "{{ RESTIC_REPOSITORY }}"
+      RESTIC_PASSWORD: '{{ RESTIC_PASSWORD }}'
+      AWS_ACCESS_KEY_ID: "{{ AWS_ACCESS_KEY_ID }}"
+      AWS_SECRET_ACCESS_KEY: "{{ AWS_SECRET_ACCESS_KEY }}"
+      TZ: "{{ timezone }}"
   check:
     image: mazzolino/restic
     hostname: docker
     restart: unless-stopped
     environment:
+      SKIP_INIT: "true"
       RUN_ON_STARTUP: "false"
       CHECK_CRON: "0 15 5 * * *"
       RESTIC_CHECK_ARGS: >-
         --read-data-subset=10%
-      RESTIC_REPOSITORY: {{ RESTIC_REPOSITORY }}
-      RESTIC_PASSWORD: {{ RESTIC_PASSWORD }}
-      AWS_ACCESS_KEY_ID: {{ AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: {{ AWS_SECRET_ACCESS_KEY }}
-      TZ: {{ timezone }}
+      RESTIC_REPOSITORY: "{{ RESTIC_REPOSITORY }}"
+      RESTIC_PASSWORD: '{{ RESTIC_PASSWORD }}'
+      AWS_ACCESS_KEY_ID: "{{ AWS_ACCESS_KEY_ID }}"
+      AWS_SECRET_ACCESS_KEY: "{{ AWS_SECRET_ACCESS_KEY }}"
+      TZ: "{{ timezone }}"
 
 networks:
   default:
