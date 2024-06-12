@@ -23,6 +23,7 @@
     owner: "{{ primary_user }}"
     group: "{{ primary_group }}"
   become: true
+  register: image_file_1
 
 - name: Copy Caddyfile file to destination
   template:
@@ -31,11 +32,14 @@
     owner: "{{ primary_user }}"
     group: "{{ primary_group }}"
   become: true
-  #notify:
-  #  - Build Caddy image
+  register: image_file_2
+
+- name: Run build Handler
+  meta: flush_handlers
 
 - name: Start docker compose reverse proxy
   community.docker.docker_compose_v2:
     project_src: "{{ install_directory }}/{{ role_name }}"
     remove_orphans: yes
+    build: "always"
 
