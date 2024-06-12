@@ -4,10 +4,9 @@ services:
     image: grafana/grafana
     container_name: grafana
     restart: unless-stopped
-    environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=grafana
-    volumes: []
+    user: "1000"
+    volumes:
+      - "{{ data_dir }}/{{ role_name }}/data:/var/lib/grafana"
 
 networks:
   default:
