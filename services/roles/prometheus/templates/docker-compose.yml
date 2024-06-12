@@ -1,0 +1,14 @@
+---
+services:
+  grafana:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - "{{ install_directory }}/{{ role_name }}/prometheus.yml:/etc/prometheus/prometheus.yml"
+
+networks:
+  default:
+    name: reverse-proxy
+    external: true
+
