@@ -1,3 +1,9 @@
+{
+	servers {
+		 metrics
+	}
+}
+
 {{ domain }}, *.{{ domain }} {
 	tls {
 		dns cloudflare {{ CF_API_TOKEN }}
