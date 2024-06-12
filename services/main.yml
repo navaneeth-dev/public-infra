@@ -11,4 +11,5 @@
     - role: diun
     - role: restic
     - role: grafana
+    - role: prometheus
 
