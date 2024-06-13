@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     environment:
       - "CF_APP_PUBLIC_URL=https://commafeed.{{ domain }}"
+    volumes:
+      - "{{ data_dir }}/{{ role_name }}/data:/commafeed/data"
 
 networks:
   default:
