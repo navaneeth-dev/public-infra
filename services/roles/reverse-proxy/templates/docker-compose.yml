@@ -12,17 +12,13 @@ services:
       - SUBDOMAINS=wildcard
       - VALIDATION=dns
       - DNSPLUGIN=cloudflare
-      #- ONLY_SUBDOMAINS=false #optional
-      #- EXTRA_DOMAINS=<extradomains> #optional
-      - STAGING=true #optional
+      - STAGING=false
     ports:
       - 443:443
       - 80:80
     restart: unless-stopped
     volumes:
-      #- "{{ data_dir }}/{{ role_name }}/data:/data"
       - "{{ data_dir }}/{{ role_name }}/config:/config"
-      #- "{{ data_dir }}/{{ role_name }}/logs:/var/log/swag"
 
 networks:
   default:
