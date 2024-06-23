@@ -1,19 +1,31 @@
 services:
-  caddy:
-    build: ./
-    container_name: caddy
-    restart: unless-stopped
+  swag:
+    image: lscr.io/linuxserver/swag
+    container_name: swag
     cap_add:
       - NET_ADMIN
+    environment:
+      - "PUID=1000"
+      - "PGID=1000"
+      - "TZ={{ timezone }}"
+      - "URL={{ domain }}"
+      - SUBDOMAINS=wildcard
+      - VALIDATION=dns
+      - DNSPLUGIN=cloudflare
+      #- ONLY_SUBDOMAINS=false #optional
+      #- EXTRA_DOMAINS=<extradomains> #optional
+      - STAGING=true #optional
     ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
+      - 443:443
+      - 80:80
+    restart: unless-stopped
     volumes:
-      - "{{ data_dir }}/{{ role_name }}/data:/data"
+      #- "{{ data_dir }}/{{ role_name }}/data:/data"
       - "{{ data_dir }}/{{ role_name }}/config:/config"
+      #- "{{ data_dir }}/{{ role_name }}/logs:/var/log/swag"
 
 networks:
   default:
     name: reverse-proxy
     external: false
+
