@@ -1,6 +1,6 @@
 ---
 services:
-  grafana:
+  prometheus:
     image: prom/prometheus
     container_name: prometheus
     restart: unless-stopped
