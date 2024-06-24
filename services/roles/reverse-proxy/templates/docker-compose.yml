@@ -16,6 +16,8 @@ services:
     ports:
       - 443:443
       - 80:80
+      # Debug
+      #- "127.0.0.1:8080:8080"
     restart: unless-stopped
     volumes:
       - "{{ data_dir }}/{{ role_name }}/config:/config"
