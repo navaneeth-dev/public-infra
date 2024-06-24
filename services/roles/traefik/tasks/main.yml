@@ -28,6 +28,12 @@
     dest: /etc/systemd/system/traefik.service
   notify: reload systemctl
 
+- name: Create /etc/letsencrypt
+  become: yes
+  ansible.builtin.file:
+    path: /etc/letsencrypt
+    state: directory
+
 - name: Create /etc/traefik
   become: yes
   ansible.builtin.file:
