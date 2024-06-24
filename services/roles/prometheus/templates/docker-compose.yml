@@ -2,6 +2,7 @@
 services:
   prometheus:
     image: prom/prometheus
+    user: "1000:1000"
     container_name: prometheus
     restart: unless-stopped
     volumes:
@@ -10,7 +11,8 @@ services:
   nginx-prometheus-exporter:
     container_name: nginx-prometheus-exporter
     image: nginx/nginx-prometheus-exporter:1.1.0
-    command: --nginx.scrape-uri=http://swag:8080/stub_status
+    command:
+      - --nginx.scrape-uri=http://swag:8080/stub_status
 
 networks:
   default:
