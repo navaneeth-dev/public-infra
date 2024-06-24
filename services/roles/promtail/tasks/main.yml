@@ -1,0 +1,39 @@
+---
+- name: Create install directory
+  file:
+    path: "{{ install_directory }}/{{ role_name }}"
+    state: directory
+    owner: "{{ primary_user }}"
+    group: "{{ primary_group }}"
+  become: true
+
+- name: Copy promtail.yml file to destination
+  template:
+    src: promtail.yml
+    dest: "{{ install_directory }}/{{ role_name }}/promtail.yml"
+    owner: "{{ primary_user }}"
+    group: "{{ primary_group }}"
+  become: true
+
+- name: Copy loki.yml file to destination
+  template:
+    src: loki.yml
+    dest: "{{ install_directory }}/{{ role_name }}/loki.yml"
+    owner: "{{ primary_user }}"
+    group: "{{ primary_group }}"
+  become: true
+
+- name: Copy docker-compose file to destination
+  template:
+    src: docker-compose.yml
+    dest: "{{ install_directory }}/{{ role_name }}/docker-compose.yml"
+    owner: "{{ primary_user }}"
+    group: "{{ primary_group }}"
+    validate: docker compose -f %s config
+  become: true
+
+- name: Start docker container
+  community.docker.docker_compose_v2:
+    project_src: "{{ install_directory }}/{{ role_name }}"
+    remove_orphans: yes
+
