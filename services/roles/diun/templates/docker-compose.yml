@@ -11,3 +11,8 @@ services:
       - "TZ={{ timezone }}"
     restart: always
 
+networks:
+  default:
+    name: reverse-proxy
+    external: true
+
