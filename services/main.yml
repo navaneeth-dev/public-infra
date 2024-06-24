@@ -5,6 +5,8 @@
   roles:
     - role: geerlingguy.docker
       become: yes
+    - role: traefik
+      tags: [ proxy ]
     - role: commafeed
     - role: pairdrop
     - role: diun

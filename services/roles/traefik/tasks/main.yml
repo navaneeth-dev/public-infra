@@ -1,0 +1,43 @@
+- name: Download traefik and unarchive
+  become: yes
+  ansible.builtin.unarchive:
+    src: https://github.com/traefik/traefik/releases/download/v3.0.3/traefik_v3.0.3_linux_arm64.tar.gz
+    dest: /usr/bin
+    include: traefik
+    remote_src: yes
+
+- name: Create traefik group
+  become: yes
+  ansible.builtin.group:
+    name: "traefik"
+    state: present
+
+- name: Create traefik user
+  become: yes
+  ansible.builtin.user:
+    name: traefik
+    create_home: false
+    shell: /bin/false
+    system: true
+    group: traefik
+
+- name: Copy systemd template
+  become: yes
+  ansible.builtin.template:
+    src: traefik.service
+    dest: /etc/systemd/system/traefik.service
+  notify: reload systemctl
+
+- name: Create /etc/traefik
+  become: yes
+  ansible.builtin.file:
+    path: /etc/traefik
+    state: directory
+
+- name: Copy traefik.yml
+  become: yes
+  ansible.builtin.template:
+    src: traefik.yml
+    dest: /etc/traefik/traefik.yml
+  notify: restart traefik
+

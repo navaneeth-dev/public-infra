@@ -1,0 +1,52 @@
+---
+api:
+  dashboard: true
+  debug: true
+  insecure: true
+
+providers:
+  docker:
+    exposedByDefault: false
+
+log:
+  level: DEBUG
+
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+  websecure:
+    address: ":443"
+    http:
+      tls:
+        certResolver: lets-encrypt-staging
+        domains:
+          - main: s.{{ domain }}
+            sans:
+              - "*.s.{{ domain }}"
+
+certificatesResolvers:
+  lets-encrypt-production:
+    acme:
+      email: "{{ email }}"
+      storage: "/etc/letsencrypt/acme.json"
+      dnsChallenge:
+        provider: cloudflare
+        resolvers:
+          - "1.1.1.1:53"
+          - "1.0.0.1:53"
+  lets-encrypt-staging:
+    acme:
+      email: "{{ email }}"
+      storage: "/etc/letsencrypt/acme.json"
+      caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+      dnsChallenge:
+        provider: cloudflare
+        resolvers:
+          - "1.1.1.1:53"
+          - "1.0.0.1:53"
+
