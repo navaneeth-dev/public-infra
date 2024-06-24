@@ -8,7 +8,7 @@
   become: true
 
 - name: Copy nginx.conf file to destination
-  file:
+  copy:
     src: nginx.conf
     dest: "{{ data_dir }}/{{ role_name }}/config/nginx/nginx.conf"
     owner: "{{ primary_user }}"
@@ -17,7 +17,7 @@
   notify: Restart reverse-proxy
 
 - name: Copy cloudflare.ini file to destination
-  copy:
+  template:
     src: cloudflare.ini
     dest: "{{ data_dir }}/{{ role_name }}/config/dns-conf/cloudflare.ini"
     owner: "{{ primary_user }}"
