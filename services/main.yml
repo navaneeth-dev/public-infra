@@ -6,10 +6,12 @@
     - role: geerlingguy.docker
       become: yes
     - role: reverse-proxy
+      tags: [ proxy ]
     - role: commafeed
     - role: pairdrop
     - role: diun
     - role: restic
     - role: grafana
     - role: prometheus
+    - role: promtail
 
