@@ -17,7 +17,7 @@
   notify: Restart reverse-proxy
 
 - name: Copy cloudflare.ini file to destination
-  template:
+  copy:
     src: cloudflare.ini
     dest: "{{ data_dir }}/{{ role_name }}/config/dns-conf/cloudflare.ini"
     owner: "{{ primary_user }}"
@@ -26,7 +26,7 @@
   notify: Restart reverse-proxy
 
 - name: Copy MaxMind GeoIP DB file to destination
-  file:
+  copy:
     src: GeoLite2-Country.mmdb
     dest: "{{ data_dir }}/{{ role_name }}/config/nginx/GeoLite2-Country.mmdb"
     owner: "{{ primary_user }}"
