@@ -9,6 +9,7 @@ Documentation=https://doc.traefik.io/traefik/
 # Run traefik as its own user (create new user with: useradd -r -s /bin/false -U -M traefik)
 User=traefik
 AmbientCapabilities=CAP_NET_BIND_SERVICE
+Environment="CLOUDFLARE_DNS_API_TOKEN={{ CF_API_TOKEN }}"
 
 # configure service behavior
 Type=notify
