@@ -8,14 +8,14 @@
       tags: [ dependencies ]
     - role: traefik
       tags: [ proxy ]
+    - role: prometheus
+      tags: [ monitoring ]
     - role: commafeed
       tags: [ commafeed ]
     - role: pairdrop
     - role: diun
     - role: restic
     - role: grafana
-      tags: [ monitoring ]
-    - role: influxdb
       tags: [ monitoring ]
     #- role: promtail
     #  tags: [ monitoring ]

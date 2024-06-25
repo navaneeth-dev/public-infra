@@ -1,0 +1,24 @@
+---
+- name: Create data directory
+  file:
+    path: "{{ data_dir }}/{{ role_name }}/data"
+    state: directory
+    owner: "{{ primary_user }}"
+    group: "{{ primary_group }}"
+  become: true
+
+- name: Install prometheus
+  vars:
+    prometheus_web_listen_address: "127.0.0.1:9090"
+    prometheus_global:
+      scrape_interval: 5s
+    prometheus_scrape_configs:
+    - job_name: "prometheus"
+      static_configs:
+        - targets:
+            - "localhost:9090"
+            - "localhost:8082"
+  ansible.builtin.include_role:
+    name: prometheus.prometheus.prometheus
+
+- ansible.builtin.meta: flush_handlers
