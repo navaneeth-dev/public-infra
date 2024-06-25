@@ -8,7 +8,7 @@
     - role: traefik
       tags: [ proxy ]
     - role: commafeed
-      tags: [ services ]
+      tags: [ commafeed ]
     - role: pairdrop
     - role: diun
     - role: restic
