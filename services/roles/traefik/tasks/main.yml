@@ -26,6 +26,10 @@
     - reload systemctl
     - restart traefik
 
+- name: Create network for docker containers
+  community.docker.docker_network:
+    name: reverse-proxy
+
 - name: Copy systemd template
   become: yes
   ansible.builtin.template:
