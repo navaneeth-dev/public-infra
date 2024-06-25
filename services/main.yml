@@ -5,6 +5,7 @@
   roles:
     - role: geerlingguy.docker
       become: yes
+      tags: [ dependencies ]
     - role: traefik
       tags: [ proxy ]
     - role: commafeed
