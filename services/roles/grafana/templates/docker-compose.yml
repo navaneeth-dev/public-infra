@@ -7,6 +7,9 @@ services:
     user: "1000"
     volumes:
       - "{{ data_dir }}/{{ role_name }}/data:/var/lib/grafana"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grafana.rule=Host(`grafana.{{ domain }}`)"
 
 networks:
   default:

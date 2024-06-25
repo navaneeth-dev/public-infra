@@ -9,6 +9,9 @@ services:
       - DEBUG_MODE=true
       - "TZ={{ timezone }}"
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pairdrop.rule=Host(`pairdrop.{{ domain }}`)"
 
 networks:
   default:
