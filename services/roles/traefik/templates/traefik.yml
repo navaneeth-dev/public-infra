@@ -16,10 +16,12 @@ accesslog:
   filePath: "/etc/traefik/access.log"
 
 metrics:
-  influxDB2:
-    address: http://localhost:8086
+  prometheus:
+    entryPoint: management
 
 entryPoints:
+  management:
+    address: "localhost:8082"
   web:
     address: ":80"
     http:
