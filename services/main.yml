@@ -14,6 +14,9 @@
     - role: diun
     - role: restic
     - role: grafana
+      tags: [ monitoring ]
     - role: prometheus
+      tags: [ monitoring ]
     - role: promtail
+      tags: [ monitoring ]
 
