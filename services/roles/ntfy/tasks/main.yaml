@@ -1,0 +1,23 @@
+- name: Create ntfy directory
+  file:
+    path: "{{ data_dir }}"
+    state: directory
+  become: true
+
+- name: Copy Docker Compose file
+  template:
+    src: docker-compose.yml
+    dest: /opt/ntfy/docker-compose.yml
+  become: true
+
+- name: Start ntfy container
+  command: docker-compose up -d
+  args:
+    chdir: /opt/ntfy
+  become: true
+
+- name: Ensure ntfy container is running
+  docker_container:
+    name: ntfy
+    state: started
+  become: true

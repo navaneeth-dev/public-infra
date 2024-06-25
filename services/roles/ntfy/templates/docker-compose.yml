@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  ntfy:
+    image: binwiederhier/ntfy
+    container_name: ntfy
+    ports:
+      - "{{ ntfy_port }}:80"
+    volumes:
+      - "{{ data_dir }}:/var/lib/ntfy"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    command: serve
