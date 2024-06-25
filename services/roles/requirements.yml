@@ -3,4 +3,5 @@ roles:
   - name: geerlingguy.docker
 collections:
   - name: prometheus.prometheus
+  - name: grafana.grafana
 

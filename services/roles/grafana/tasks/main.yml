@@ -1,32 +1,9 @@
----
-- name: Create install directory
-  file:
-    path: "{{ install_directory }}/{{ role_name }}"
-    state: directory
-    owner: "{{ primary_user }}"
-    group: "{{ primary_group }}"
-  become: true
-
-- name: Create data directory
-  file:
-    path: "{{ data_dir }}/{{ role_name }}/data"
-    state: directory
-    owner: "{{ primary_user }}"
-    group: "{{ primary_group }}"
-  become: true
-
-- name: Copy docker-compose file to destination
-  template:
-    src: docker-compose.yml
-    dest: "{{ install_directory }}/{{ role_name }}/docker-compose.yml"
-    owner: "{{ primary_user }}"
-    group: "{{ primary_group }}"
-    validate: docker compose -f %s config
-  become: true
-
-- name: Start docker container
-  community.docker.docker_compose_v2:
-    project_src: "{{ install_directory }}/{{ role_name }}"
-    pull: "always"
-    remove_orphans: yes
+- include_role: 
+    name: grafana.grafana.grafana
+  vars:
+    grafana_address: "127.0.0.1"
+    grafana_alerting: {}
+    grafana_security:
+      admin_user: admin
+      admin_password: "{{ ADMIN_PASSWORD }}"
 
