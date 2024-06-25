@@ -10,6 +10,7 @@ providers:
 
 log:
   level: DEBUG
+  filePath: "/etc/traefik/traefik.log"
 
 entryPoints:
   web:
@@ -25,24 +26,24 @@ entryPoints:
       tls:
         certResolver: lets-encrypt-staging
         domains:
-          - main: s.{{ domain }}
+          - main: "{{ domain }}"
             sans:
-              - "*.s.{{ domain }}"
+              - "*.{{ domain }}"
 
 certificatesResolvers:
-  lets-encrypt-production:
-    acme:
-      email: "{{ email }}"
-      storage: "/etc/letsencrypt/acme.json"
-      dnsChallenge:
-        provider: cloudflare
-        resolvers:
-          - "1.1.1.1:53"
-          - "1.0.0.1:53"
+  #lets-encrypt-production:
+  #  acme:
+  #    email: "{{ email }}"
+  #    storage: "/etc/letsencrypt/acme.json"
+  #    dnsChallenge:
+  #      provider: cloudflare
+  #      resolvers:
+  #        - "1.1.1.1:53"
+  #        - "1.0.0.1:53"
   lets-encrypt-staging:
     acme:
       email: "{{ email }}"
-      storage: "/etc/letsencrypt/acme.json"
+      storage: "/etc/letsencrypt/acme-staging.json"
       caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
       dnsChallenge:
         provider: cloudflare
