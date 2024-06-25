@@ -23,7 +23,8 @@ apps are much better than closed source ones.
 
 ## TODO
 
-- grafana stack
+- ntfy.sh
+- vaultwarden
 - matrix server
-- remove handler
+- migrate to k8s
 
