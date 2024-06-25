@@ -1,15 +1,15 @@
 ---
-api:
-  dashboard: true
-  debug: true
-  insecure: true
+#api:
+#  dashboard: true
+#  debug: true
+#  insecure: true
 
 providers:
   docker:
     exposedByDefault: false
 
 log:
-  level: DEBUG
+  #level: DEBUG
   filePath: "/etc/traefik/traefik.log"
 
 entryPoints:
@@ -24,22 +24,22 @@ entryPoints:
     address: ":443"
     http:
       tls:
-        certResolver: lets-encrypt-staging
+        certResolver: lets-encrypt-production
         domains:
           - main: "{{ domain }}"
             sans:
               - "*.{{ domain }}"
 
 certificatesResolvers:
-  #lets-encrypt-production:
-  #  acme:
-  #    email: "{{ email }}"
-  #    storage: "/etc/letsencrypt/acme.json"
-  #    dnsChallenge:
-  #      provider: cloudflare
-  #      resolvers:
-  #        - "1.1.1.1:53"
-  #        - "1.0.0.1:53"
+  lets-encrypt-production:
+    acme:
+      email: "{{ email }}"
+      storage: "/etc/letsencrypt/acme.json"
+      dnsChallenge:
+        provider: cloudflare
+        resolvers:
+          - "1.1.1.1:53"
+          - "1.0.0.1:53"
   lets-encrypt-staging:
     acme:
       email: "{{ email }}"
