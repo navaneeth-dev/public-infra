@@ -1,0 +1,16 @@
+---
+services:
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    restart: unless-stopped
+    volumes:
+      - "{{ data_dir }}/{{ role_name }}/data:/var/lib/influxdb"
+    ports:
+      - "127.0.0.1:8086:8086"
+
+networks:
+  default:
+    name: reverse-proxy
+    external: true
+

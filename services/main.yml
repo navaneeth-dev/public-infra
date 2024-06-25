@@ -15,8 +15,8 @@
     - role: restic
     - role: grafana
       tags: [ monitoring ]
-    - role: prometheus
+    - role: influxdb
       tags: [ monitoring ]
-    - role: promtail
-      tags: [ monitoring ]
+    #- role: promtail
+    #  tags: [ monitoring ]
 

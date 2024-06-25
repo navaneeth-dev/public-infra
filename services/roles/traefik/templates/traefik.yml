@@ -15,6 +15,10 @@ log:
 accesslog:
   filePath: "/etc/traefik/access.log"
 
+metrics:
+  influxDB2:
+    address: http://localhost:8086
+
 entryPoints:
   web:
     address: ":80"
