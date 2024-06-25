@@ -19,4 +19,6 @@
       tags: [ monitoring ]
     - role: promtail
       tags: [ monitoring ]
+    - role: ntfy 
+      tags [ ntfy ]
 
