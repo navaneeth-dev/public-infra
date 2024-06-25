@@ -3,20 +3,20 @@
   hosts: vps
   remote_user: debian
   roles:
-    #- role: geerlingguy.docker
-    #  become: yes
-    #  tags: [ dependencies ]
-    #- role: traefik
-    #  tags: [ proxy ]
-    #- role: prometheus
-    #  tags: [ monitoring ]
-    #- role: commafeed
-    #  tags: [ commafeed ]
-    #- role: pairdrop
-    #- role: diun
-    #- role: restic
+    - role: geerlingguy.docker
+      become: yes
+      tags: [ dependencies ]
+    - role: traefik
+      tags: [ proxy ]
+    - role: prometheus
+      tags: [ monitoring ]
+    - role: commafeed
+      tags: [ commafeed ]
+    - role: pairdrop
+    - role: diun
+    - role: restic
     - role: grafana
       tags: [ monitoring ]
-    #- role: promtail
-    #  tags: [ monitoring ]
+    - role: promtail
+      tags: [ monitoring ]
 

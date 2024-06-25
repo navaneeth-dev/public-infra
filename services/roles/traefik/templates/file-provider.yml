@@ -1,0 +1,15 @@
+http:
+  routers:
+    grafana:
+      entryPoints:
+      - websecure
+      service: grafana
+      rule: "Host(`grafana.{{ domain }}`)"
+
+  # Add the service
+  services:
+    grafana:
+      loadBalancer:
+        servers:
+          - url: http://127.0.0.1:3000/
+        passHostHeader: true

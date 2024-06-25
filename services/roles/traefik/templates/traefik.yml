@@ -5,6 +5,8 @@
 #  insecure: true
 
 providers:
+  file:
+    filename: "/etc/traefik/file-provider.yml"
   docker:
     exposedByDefault: false
 
