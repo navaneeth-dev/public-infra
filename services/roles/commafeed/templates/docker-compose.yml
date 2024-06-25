@@ -7,8 +7,12 @@ services:
       - "CF_APP_PUBLIC_URL=https://commafeed.{{ domain }}"
     volumes:
       - "{{ data_dir }}/{{ role_name }}/data:/commafeed/data"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.commafeed.rule=Host(`commafeed.{{ domain }}`)"
 
 networks:
   default:
     name: reverse-proxy
     external: true
+
