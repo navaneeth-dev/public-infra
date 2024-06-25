@@ -9,8 +9,11 @@ providers:
     exposedByDefault: false
 
 log:
-  #level: DEBUG
+  level: DEBUG
   filePath: "/etc/traefik/traefik.log"
+
+accesslog:
+  filePath: "/etc/traefik/access.log"
 
 entryPoints:
   web:
@@ -40,14 +43,14 @@ certificatesResolvers:
         resolvers:
           - "1.1.1.1:53"
           - "1.0.0.1:53"
-  lets-encrypt-staging:
-    acme:
-      email: "{{ email }}"
-      storage: "/etc/letsencrypt/acme-staging.json"
-      caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
-      dnsChallenge:
-        provider: cloudflare
-        resolvers:
-          - "1.1.1.1:53"
-          - "1.0.0.1:53"
-
+  #  lets-encrypt-staging:
+  #    acme:
+  #      email: "{{ email }}"
+  #      storage: "/etc/letsencrypt/acme-staging.json"
+  #      caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+  #      dnsChallenge:
+  #        provider: cloudflare
+  #        resolvers:
+  #          - "1.1.1.1:53"
+  #          - "1.0.0.1:53"
+  #
