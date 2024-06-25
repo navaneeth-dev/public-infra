@@ -20,25 +20,36 @@
     shell: /bin/false
     system: true
     group: traefik
+    append: true
+    groups: docker
+  notify:
+    - reload systemctl
+    - restart traefik
 
 - name: Copy systemd template
   become: yes
   ansible.builtin.template:
     src: traefik.service
     dest: /etc/systemd/system/traefik.service
-  notify: reload systemctl
+  notify:
+    - reload systemctl
+    - restart traefik
 
 - name: Create /etc/letsencrypt
   become: yes
   ansible.builtin.file:
     path: /etc/letsencrypt
     state: directory
+    owner: traefik
+    group: traefik
 
 - name: Create /etc/traefik
   become: yes
   ansible.builtin.file:
     path: /etc/traefik
     state: directory
+    owner: traefik
+    group: traefik
 
 - name: Copy traefik.yml
   become: yes
