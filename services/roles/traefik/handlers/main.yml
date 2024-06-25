@@ -1,4 +1,5 @@
 - name: reload systemctl
+  become: yes
   command: systemctl daemon-reload
 
 - name: restart traefik
