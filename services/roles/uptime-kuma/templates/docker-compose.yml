@@ -1,0 +1,16 @@
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    restart: unless-stopped
+    volumes:
+      - "{{ data_dir }}/{{ role_name }}/data:/app/data"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.uptime-kuma.rule=Host(`status.{{ domain }}`)"
+
+networks:
+  default:
+    name: reverse-proxy
+    external: true
+
