@@ -9,6 +9,7 @@ Self hosted foss services hosted by me.
 | CommaFeed | https://commafeed.foss.rizexor.com |
 | PairDrop | https://pairdrop.foss.rizexor.com |
 | Grafana | https://grafana.foss.rizexor.com |
+| Uptime Kuma | https://status.foss.rizexor.com |
 
 ## Goals
 
