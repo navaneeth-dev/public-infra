@@ -9,7 +9,7 @@
     - role: traefik
       tags: [ proxy ]
     - role: prometheus
-      tags: [ monitoring ]
+      tags: [ monitoring, prometheus ]
     - role: commafeed
       tags: [ commafeed ]
     - role: pairdrop
