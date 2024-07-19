@@ -7,7 +7,24 @@
     group: "{{ primary_group }}"
   become: true
 
+- name: Install blackbox exporter
+  ansible.builtin.include_role:
+    name: prometheus.prometheus.blackbox_exporter
+  vars:
+    blackbox_exporter_web_listen_address: "127.0.0.1:9115"
+    blackbox_exporter_configuration_modules:
+      http_2xx:
+        http:
+          method: GET
+          valid_status_codes: [200]
+          tls_config:
+            insecure_skip_verify: true
+        prober: http
+        timeout: 5s
+
 - name: Install prometheus
+  ansible.builtin.include_role:
+    name: prometheus.prometheus.prometheus
   vars:
     prometheus_web_listen_address: "127.0.0.1:9090"
     prometheus_global:
@@ -18,7 +35,22 @@
         - targets:
             - "localhost:9090"
             - "localhost:8082"
-  ansible.builtin.include_role:
-    name: prometheus.prometheus.prometheus
+    - job_name: "blackbox"
+      metrics_path: /probe
+      params:
+        module: [http_2xx]  # Look for a HTTP 200 response.
+      static_configs:
+        - targets:
+          - https://torrents.home.rizexor.com
+      relabel_configs:
+        - source_labels: [__address__]
+          target_label: __param_target
+        - source_labels: [__param_target]
+          target_label: instance
+        - target_label: __address__
+          replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
+    - job_name: 'blackbox_exporter'  # collect blackbox exporter's operational metrics.
+      static_configs:
+        - targets: ['127.0.0.1:9115']
 
 - ansible.builtin.meta: flush_handlers
