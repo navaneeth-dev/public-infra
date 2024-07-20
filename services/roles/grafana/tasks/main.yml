@@ -3,6 +3,9 @@
   vars:
     grafana_address: "127.0.0.1"
     grafana_alerting: {}
+    grafana_date_formats:
+      full_date: "D-MMM-YYYY hh:mm:ss A"
+      default_timezone: Asia/Kolkata
     grafana_security:
       admin_user: admin
       admin_password: "{{ ADMIN_PASSWORD }}"
