@@ -10,6 +10,7 @@ Self hosted foss services hosted by me.
 | PairDrop | https://pairdrop.foss.rizexor.com |
 | Grafana | https://grafana.foss.rizexor.com |
 | Uptime Kuma | https://status.foss.rizexor.com |
+| Ntfy | https://ntfy.foss.rizexor.com |
 
 ## Goals
 
