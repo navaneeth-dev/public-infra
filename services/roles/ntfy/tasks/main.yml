@@ -7,6 +7,17 @@
     group: "{{ primary_group }}"
   become: true
 
+- name: Create data directory
+  file:
+    path: "{{ data_dir }}/{{ role_name }}/{{ item }}"
+    state: directory
+    owner: "{{ primary_user }}"
+    group: "{{ primary_group }}"
+  become: true
+  loop:
+    - "data"
+    - "cache"
+
 - name: Copy docker-compose file to destination
   template:
     src: docker-compose.yml

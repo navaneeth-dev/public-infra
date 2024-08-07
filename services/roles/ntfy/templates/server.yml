@@ -6,3 +6,5 @@ auth-default-access: "deny-all"
 cache-file: "/var/cache/ntfy/cache.db"
 attachment-cache-dir: "/var/cache/ntfy/attachments"
 behind-proxy: true
+
+enable-login: true
