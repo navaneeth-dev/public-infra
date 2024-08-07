@@ -1,0 +1,4 @@
+base-url: "https://ntfy.{{ domain }}"
+cache-file: "/var/cache/ntfy/cache.db"
+attachment-cache-dir: "/var/cache/ntfy/attachments"
+behind-proxy: true

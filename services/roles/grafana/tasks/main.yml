@@ -6,6 +6,7 @@
     grafana_date_formats:
       full_date: "D-MMM-YYYY hh:mm:ss A"
       default_timezone: Asia/Kolkata
+      interval_second: "hh:mm:ss A"
     grafana_security:
       admin_user: admin
       admin_password: "{{ ADMIN_PASSWORD }}"

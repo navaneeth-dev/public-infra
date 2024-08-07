@@ -20,4 +20,5 @@
     - role: promtail
       tags: [ monitoring ]
     - role: uptime-kuma
+    - role: ntfy
 
