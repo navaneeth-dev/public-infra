@@ -13,7 +13,6 @@
     - role: commafeed
       tags: [ commafeed ]
     - role: pairdrop
-    - role: diun
     - role: restic
     - role: grafana
       tags: [ monitoring ]
@@ -21,4 +20,5 @@
       tags: [ monitoring ]
     - role: uptime-kuma
     - role: ntfy
+      tags: [ ntfy ]
 
