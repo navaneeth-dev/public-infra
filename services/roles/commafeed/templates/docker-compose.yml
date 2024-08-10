@@ -1,6 +1,6 @@
 services:
   commafeed:
-    image: athou/commafeed:4.4.0
+    image: athou/commafeed:4.6.0
     container_name: commafeed
     restart: unless-stopped
     environment:
