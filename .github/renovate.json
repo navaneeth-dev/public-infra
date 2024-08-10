@@ -1,5 +1,9 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:recommended"],
-    "groupName": "all"
+    "extends": ["config:recommended", ":semanticCommits"],
+    "groupName": "all",
+    "timezone": "Asia/Kolkata",
+    "schedule": [
+        "before 3pm"
+    ]
 }
