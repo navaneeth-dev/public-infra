@@ -3,5 +3,4 @@
     "onboardingConfig": {
         "extends": ["config:recommended"]
     },
-    "repositories": ["navaneeth-dev/public-infra"]
 }
