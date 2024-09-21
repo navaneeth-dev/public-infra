@@ -25,8 +25,6 @@ apps are much better than closed source ones.
 
 ## TODO
 
-- ntfy.sh
 - vaultwarden
 - matrix server
 - migrate to k8s
-
