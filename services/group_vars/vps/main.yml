@@ -2,7 +2,7 @@ primary_user: debian
 primary_group: debian
 install_directory: /srv
 data_dir: /docker/appdata
-domain: foss.rizexor.com
+domain: fossindia.ovh
 timezone: Asia/Kolkata
 docker_users:
   - "{{ primary_user }}"

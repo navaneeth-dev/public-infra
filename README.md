@@ -6,11 +6,11 @@ Self hosted foss services hosted by me.
 
 | Name | Url |
 | --- | ---- |
-| CommaFeed | https://commafeed.foss.rizexor.com |
-| PairDrop | https://pairdrop.foss.rizexor.com |
-| Grafana | https://grafana.foss.rizexor.com |
-| Uptime Kuma | https://status.foss.rizexor.com |
-| Ntfy | https://ntfy.foss.rizexor.com |
+| CommaFeed | https://commafeed.fossindia.ovh |
+| PairDrop | https://pairdrop.fossindia.ovh |
+| Grafana | https://grafana.fossindia.ovh |
+| Uptime Kuma | https://status.fossindia.ovh |
+| Ntfy | https://ntfy.fossindia.ovh |
 
 ## Goals
 
