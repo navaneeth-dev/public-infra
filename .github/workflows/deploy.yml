@@ -78,7 +78,7 @@ jobs:
         run: ssh-add
       - name: Get VPS public key and set permissions for known_hosts
         run: |
-          ssh-keyscan foss.rizexor.com >> ~/.ssh/known_hosts
+          ssh-keyscan fossindia.ovh >> ~/.ssh/known_hosts
           chmod 644 ~/.ssh/known_hosts
       - name: Install dependencies
         run: ansible-galaxy install -r roles/requirements.yml
