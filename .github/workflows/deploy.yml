@@ -10,7 +10,7 @@ permissions:
 jobs:
   terraform:
     name: 'Create infrastructure'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     environment: production
     defaults:
       run:
@@ -55,7 +55,7 @@ jobs:
   ansible:
     name: 'Deploy Services'
     needs: terraform
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     environment: production
     defaults:
       run:
