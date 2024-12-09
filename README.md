@@ -1,6 +1,5 @@
-# FOSS Infrastructure
-
-Self hosted foss services hosted by me.
+<h1 align="center">fossindia-services</h1>
+<p align="center">Reliable FOSS services for India.</p>
 
 ## Services
 
@@ -14,17 +13,18 @@ Self hosted foss services hosted by me.
 
 ## Goals
 
-- Replace closed source apps with FOSS (Google, Vaultwarden, etc...)
-- Full control over data
-- Decenteralize infrastructure
+- Replace closed source apps with FOSS alternatives
+- High performance, low latency services for India
+- No tracking / No ADs
 
 ## Why?
 
-To support foss and to learn IaC (terraform, ansible etc...). Plus some FOSS
-apps are much better than closed source ones.
+- To support FOSS
+- Not be locked into an walled garden / ecosystem
+- Control and freedom
 
 ## TODO
 
-- vaultwarden
-- matrix server
-- migrate to k8s
+- [ ] blog
+- [ ] matrix server
+- [ ] migrate to k8s
