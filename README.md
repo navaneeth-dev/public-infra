@@ -1,6 +1,11 @@
 <h1 align="center">fossindia-services</h1>
 <p align="center">Reliable FOSS services for India.</p>
 
+> [!CAUTION]
+> Services migrated to [navaneeth-dev/public-gitops](https://navaneeth-dev/public-gitops)
+>
+> To have better IaC approach and high availablity this repo has been migrated.
+
 ## Services
 
 | Name | Url |
