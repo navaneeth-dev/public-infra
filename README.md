@@ -2,7 +2,7 @@
 <p align="center">Reliable FOSS services for India.</p>
 
 > [!CAUTION]
-> Services migrated to [navaneeth-dev/public-gitops](https://navaneeth-dev/public-gitops)
+> Services migrated to [navaneeth-dev/public-gitops](https://github.com/navaneeth-dev/public-gitops)
 >
 > To have better IaC approach and high availablity this repo has been migrated.
 
